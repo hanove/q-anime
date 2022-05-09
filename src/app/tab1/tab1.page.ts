@@ -9,6 +9,7 @@ import { QueriesService } from '../services/queries.service';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
+
 export class Tab1Page implements OnInit {
   @ViewChild(IonInfiniteScroll) infiniteScroll: IonInfiniteScroll;
 
@@ -27,7 +28,7 @@ export class Tab1Page implements OnInit {
   private genres = [];
 
   ngOnInit(): void {
-    /*var genres = this.route.snapshot.params;
+    var genres = this.route.snapshot.params;
     for (let i = 0; i < 18; i++) {
       if (genres[i] != undefined) {
         this.genres.push(genres[i]);
@@ -37,12 +38,12 @@ export class Tab1Page implements OnInit {
     if (this.genres.length > 0) {
       this.canCleanFilter = true;
       this.getAnimeByGenres();
-    } else {*/
+    } else {
     this.getAnimes();
-    //}
+    }
   }
 
-  /*typeSort(value) {
+  typeSort(value) {
     this.sort = value;
     this.animes = [];
     this.page = 0;
@@ -58,7 +59,7 @@ export class Tab1Page implements OnInit {
     this.animes = [];
     this.page = 0;
     this.getAnimes();
-  }*/
+  }
 
   getAnimes() {
     this.page++;
@@ -138,7 +139,7 @@ export class Tab1Page implements OnInit {
   }
 
   openAnime(id: number) {
-    //this.navCtrl.navigateForward(["details", id]);
+    this.navCtrl.navigateForward(["details", id]);
   }
 }
 

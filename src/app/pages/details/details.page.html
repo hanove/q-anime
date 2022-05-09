@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="anime">{{anime.title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen *ngIf="anime">
+  <ion-card class="">
+    <ion-row class="ion-justify-content-center">
+      <img src="{{anime.coverImageLarge}}" />
+    </ion-row>
+    <ion-card-header>
+      <ion-card-title>{{anime.title}}</ion-card-title>
+      <ion-row>
+        <div *ngFor="let genre of anime.genres">
+          <ion-card-subtitle>
+            <ion-chip outline>
+              <ion-label>{{genre}}</ion-label>
+            </ion-chip>
+          </ion-card-subtitle>
+        </div>
+      </ion-row>
+    </ion-card-header>
+    <ion-row class="ion-margin-start">
+      <p>
+        Status: {{anime.status}}<br />
+        Episódios: {{anime.episodes}}<br />
+      </p>
+    </ion-row>
+    <ion-row class="ion-justify-content-start">
+      <ion-col size="auto">
+        <ion-button fill="clear" (click)="onLike()">
+          <ion-icon
+            slot="icon-only"
+            [name]="liked ? 'heart' : 'heart-outline'"
+          ></ion-icon>
+        </ion-button>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button fill="clear" (click)="onDislike()">
+          <ion-icon
+            slot="icon-only"
+            [name]="disliked ? 'heart-dislike' : 'heart-dislike-outline'"
+          ></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-start ion-margin-start">
+      <ion-col size="auto">
+        <ion-button [fill]="watched ? 'solid' : 'outline'" (click)="onWatched()">
+          <ion-icon name="checkmark"></ion-icon>
+           Assistido
+        </ion-button>
+      </ion-col>
+      <ion-col size="auto">
+        <ion-button [fill]="watchLater ? 'solid' : 'outline'" (click)="onWatchLater()">
+          <ion-icon name="time"></ion-icon>
+           Assistir mais tarde
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+</ion-content>
