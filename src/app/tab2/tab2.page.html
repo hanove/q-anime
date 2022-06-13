@@ -1,17 +1,72 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+    <ion-title> Tab 2 </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list>
+    
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="filter-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="getLiked()">
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="getDisliked()">
+        <ion-icon name="heart-dislike-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="getWatchLater()">
+        <ion-icon name="time-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="getWatched()">
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="getAll()">
+        <ion-label>ALL</ion-label>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <ion-list *ngIf="animes">
+    <ion-item *ngFor="let anime of animes">
+      <ion-thumbnail slot="start">
+        <ion-img src="{{anime.coverImageMedium}}"></ion-img>
+      </ion-thumbnail>
+      <ion-label>{{anime.title}}</ion-label>
+    </ion-item>
+  </ion-list>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon name="filter-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="typeSort('TITLE_ROMAJI')">A-Z</ion-fab-button>
+      <ion-fab-button (click)="typeSort('TITLE_ROMAJI_DESC')">Z-A</ion-fab-button>
+      <ion-fab-button (click)="sortBy()">
+        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button *ngIf="canCleanFilter==true" (click)="cleanFilter()">
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab> -->
+
+  <!-- <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)"> -->
+  <!-- <ion-infinite-scroll-content> -->
+  <!-- <img -->
+  <!-- src="../../assets/animegif.gif" -->
+  <!-- style="display: block; margin-left: auto; margin-right: auto" -->
+  <!-- /> -->
+  <!-- <img *ngIf="notFound" src="../../assets/animenotfound.gif" style="display: block; margin-left: auto; margin-right: auto;"> -->
+  <!-- </ion-infinite-scroll-content> -->
+  <!-- </ion-infinite-scroll> -->
+
+  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
 </ion-content>
